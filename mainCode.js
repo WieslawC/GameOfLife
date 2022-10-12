@@ -1,3 +1,7 @@
-let canvas = document.getElementById("myCanvas");
+function setup() {
+  createCanvas(400, 400);
+}
 
-let context = canvas.getContext("2d");
+function draw() {
+  background(255, 0, 100);
+}

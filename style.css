@@ -1,9 +1,14 @@
-#myCanvas {
+/* #myCanvas {
   width: 200px;
   height: 200px;
   border: 2px solid black;
   display: block;
   padding: 0;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 100px; 
+} */
+canvas {
+  border: 2px solid black;
+  display: block;
+  margin: auto;
 }
