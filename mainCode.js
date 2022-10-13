@@ -1,18 +1,13 @@
-// const grid = [
-//   [{ color: 1 }, { color: 10 }, { color: 20 }],
-//   [{ color: 40 }, { color: 50 }, { color: 80 }],
-//   [{ color: 150 }, { color: 200 }, { color: 255 }],
-// ];
-const canvasSize = 300;
-const cellsAmount = 10;
-const grid = new Array(cellsAmount);
+const canvasSize = 500;
+const grid = new Array(20);
 console.log(grid);
 
 function setup() {
   createCanvas(canvasSize, canvasSize);
 
+  //INITIALIZE GRID WITH RANDOM 0 and 1
   for (let i = 0; i < grid.length; i++) {
-    grid[i] = new Array(cellsAmount);
+    grid[i] = new Array();
     for (let j = 0; j < grid.length; j++) {
       if (Math.random() < 0.5) grid[i][j] = 0;
       else grid[i][j] = 1;
@@ -24,10 +19,11 @@ function setup() {
 
 function draw() {
   const cellSize = canvasSize / grid.length;
-  grid.forEach((gridRow, x) => {
-    gridRow.forEach((rowElement, y) => {
-      if (rowElement == 0) fill(0);
-      else fill(255);
+
+  //DRAW ELEMENTS AND FILL WITH COLOR
+  grid.forEach((row, x) => {
+    row.forEach((element, y) => {
+      element ? fill(0) : fill(255);
       square(x * cellSize, y * cellSize, cellSize);
     });
   });
