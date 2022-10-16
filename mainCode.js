@@ -1,10 +1,14 @@
 const canvasSize = 500;
-const cellsAmout = 40;
+const cellsAmout = 50;
 let grid = new Array(cellsAmout);
 const frameRateValue = 10;
 
 function findClossestCells(array){
-  let nextGenArray = array;
+  let nextGenArray = new Array(cellsAmout);
+  for (let i = 0; i < nextGenArray.length; i++) {
+    nextGenArray[i] = new Array();
+    for (let j = 0; j < nextGenArray.length; j++) nextGenArray[i][j] = 0;
+  }
 
   array.forEach((row, x) => {
     row.forEach((element, y) => {
@@ -35,10 +39,9 @@ function findClossestCells(array){
         if(array[x-1][y+1])counter++;
       }
       // console.log(counter);
-      if (element == 1 && counter < 2)nextGenArray[x][y] = 0;
-      else if (element == 1 && counter > 3)nextGenArray[x][y] = 0;
+      if (counter < 2 || counter > 3)nextGenArray[x][y] = 0;
       else if (element == 0 && counter == 3)nextGenArray[x][y] = 1;
-      
+      else if(element == 1 && (counter == 2 || counter == 3)) nextGenArray[x][y] = 1;
     });
   });
   return nextGenArray;
@@ -56,6 +59,7 @@ function setup() {
       else grid[i][j] = 1;
     }
   }
+  
 
   // console.log(grid);
 }
